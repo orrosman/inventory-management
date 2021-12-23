@@ -24,8 +24,12 @@ const inventoryReducer = (state, action) => {
 		case 'ADD_NEW_ITEM':
 			const newItemName = action.payload.item.name;
 			const newItemQuantity = action.payload.item.fullQuantity;
-			
-			if (newItemName.trim() !== '' && newItemQuantity > 0) {
+
+			const isInList = state.inventory.some(
+				(item) => item.name.toLowerCase() === newItemName.toLowerCase()
+			);
+
+			if (!isInList && newItemName.trim() !== '' && newItemQuantity > 0) {
 				return {
 					...state,
 					inventory: [
