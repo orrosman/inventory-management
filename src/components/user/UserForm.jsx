@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewUser } from '../../state/actions/userActions';
 import UpdateUserButton from './UpdateUserButton';
+import SignatureCanvas from '../user/SignatureCanvas';
 
 const UserForm = () => {
 	const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const UserForm = () => {
 	const [name, setName] = useState('');
 	const [workplace, setWorkplace] = useState('');
 	const [date, setDate] = useState();
+	const [signature, setSignature] = useState();
 
 	const handleChange = ({ target }) => {
 		switch (target.name) {
@@ -29,13 +31,20 @@ const UserForm = () => {
 	};
 
 	const handleSubmit = () => {
-		dispatch(addNewUser({ name: name, workplace: workplace, date: date }));
+		dispatch(
+			addNewUser({
+				name: name,
+				workplace: workplace,
+				date: date,
+				signature: signature,
+			})
+		);
 	};
 
 	return user ? (
 		<UpdateUserButton />
 	) : (
-		<Form>
+		<Form className="container" style={{ maxWidth: '25em' }}>
 			<Form.Group className="mb-3" controlId="full-name">
 				<Form.Label>Full Name:</Form.Label>
 				<Form.Control
@@ -67,6 +76,10 @@ const UserForm = () => {
 					onChange={handleChange}
 					defaultValue={date}
 				/>
+			</Form.Group>
+
+			<Form.Group className="mb-3" controlId="date">
+				<SignatureCanvas setSignature={setSignature} />
 			</Form.Group>
 
 			<Button variant="primary" onClick={handleSubmit}>

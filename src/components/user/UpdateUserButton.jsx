@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import SignatureCanvas from './SignatureCanvas';
 import { updateUser } from '../../state/actions/userActions';
 
 const UpdateUserButton = () => {
@@ -9,6 +10,7 @@ const UpdateUserButton = () => {
 	const [name, setName] = useState('');
 	const [workplace, setWorkplace] = useState('');
 	const [date, setDate] = useState();
+	const [signature, setSignature] = useState();
 
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.userReducer.user);
@@ -36,7 +38,14 @@ const UpdateUserButton = () => {
 	};
 
 	const handleUpdateUser = () => {
-		dispatch(updateUser({ name: name, workplace: workplace, date: date }));
+		dispatch(
+			updateUser({
+				name: name,
+				workplace: workplace,
+				date: date,
+				signature: signature,
+			})
+		);
 		setName('');
 		setWorkplace('');
 		setDate();
@@ -86,6 +95,9 @@ const UpdateUserButton = () => {
 								onChange={handleChange}
 								defaultValue={user.date}
 							/>
+						</Form.Group>
+						<Form.Group className="mb-3 text-center" controlId="date">
+							<SignatureCanvas setSignature={setSignature} />
 						</Form.Group>
 					</Form>
 				</Modal.Body>
