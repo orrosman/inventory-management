@@ -2,7 +2,9 @@ import { Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { updateQuantity } from '../state/actions/inventoryActions';
 
-const ListItem = ({ item }, index) => {
+const ListItem = (props) => {
+	const { item, index } = props;
+
 	const dispatch = useDispatch();
 	return (
 		<tr key={item.name}>
