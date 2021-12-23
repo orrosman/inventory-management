@@ -34,13 +34,23 @@ const inventoryReducer = (state, action) => {
 					...state,
 					inventory: [
 						...state.inventory,
-						{ name: newItemName, fullQuantity: newItemQuantity, missing: 0 },
+						{
+							name: newItemName,
+							fullQuantity: newItemQuantity,
+							missing: 0,
+							userItem: true,
+						},
 					],
 				};
 			} else {
 				return state;
 			}
 
+		case 'REMOVE_ITEM':
+			const updatedList = state.inventory.filter(
+				(item) => item.name !== action.payload.itemName
+			);
+			return { ...state, inventory: updatedList };
 		default:
 			return state;
 	}

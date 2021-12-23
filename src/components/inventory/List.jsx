@@ -14,6 +14,7 @@ const List = () => {
 					<th>Full Quantity</th>
 					<th>Current Quantity</th>
 					<th>Missing</th>
+					<th>Remove Item</th>
 				</tr>
 			</thead>
 			<tbody>

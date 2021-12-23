@@ -1,4 +1,5 @@
 import { Form } from 'react-bootstrap';
+import RemoveItemButton from './inventory/RemoveItemButton';
 import { useDispatch } from 'react-redux';
 import { updateQuantity } from '../state/actions/inventoryActions';
 
@@ -23,6 +24,7 @@ const ListItem = (props) => {
 				/>
 			</td>
 			<td>{item.missing}</td>
+			<td>{item.userItem ? <RemoveItemButton name={item.name} /> : null}</td>
 		</tr>
 	);
 };

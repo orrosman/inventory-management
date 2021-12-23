@@ -12,4 +12,11 @@ const addNewItem = (item) => {
 	};
 };
 
-export { updateQuantity, addNewItem };
+const removeItem = (name) => {
+	return {
+		type: 'REMOVE_ITEM',
+		payload: { itemName: name },
+	};
+};
+
+export { updateQuantity, addNewItem, removeItem };
