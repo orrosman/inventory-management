@@ -1,6 +1,7 @@
 import React from 'react';
 import List from './inventory/List';
 import UserForm from './UserForm';
+import NewItemButton from './inventory/NewItemButton';
 
 const App = () => {
 	return (
@@ -8,6 +9,7 @@ const App = () => {
 			className=" text-center"
 			style={{ maxHeight: 'calc(100vh - 14em)', overflowY: 'auto' }}
 		>
+			<NewItemButton />
 			<List />
 			<UserForm />
 		</div>

@@ -5,4 +5,11 @@ const updateQuantity = (item, current) => {
 	};
 };
 
-export { updateQuantity };
+const addNewItem = (item) => {
+	return {
+		type: 'ADD_NEW_ITEM',
+		payload: { item: { ...item } },
+	};
+};
+
+export { updateQuantity, addNewItem };
