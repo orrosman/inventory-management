@@ -5,15 +5,15 @@ import SignatureCanvas from './SignatureCanvas';
 import { updateUser } from '../../state/actions/userActions';
 
 const UpdateUserButton = () => {
-	const [show, setShow] = useState(false);
-
-	const [name, setName] = useState('');
-	const [workplace, setWorkplace] = useState('');
-	const [date, setDate] = useState();
-	const [signature, setSignature] = useState();
-
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.userReducer.user);
+
+	const [name, setName] = useState(user.name);
+	const [workplace, setWorkplace] = useState(user.workplace);
+	const [date, setDate] = useState(user.date);
+	const [signature, setSignature] = useState(user.signature);
+
+	const [show, setShow] = useState(false);
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
