@@ -2,7 +2,7 @@ const inventoryReducer = (state, action) => {
 	switch (action.type) {
 		case 'UPDATE_QUANTITY':
 			const { current } = action.payload;
-			const { name, fullQuantity, missing } = action.payload.item;
+			const { name, fullQuantity } = action.payload.item;
 
 			if (current >= 0) {
 				const index = state.inventory.findIndex((item) => item.name === name);

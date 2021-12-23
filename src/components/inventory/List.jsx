@@ -1,11 +1,9 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Table, Form } from 'react-bootstrap';
-import { updateQuantity } from '../../state/actions/inventoryActions';
-
+import { useSelector } from 'react-redux';
+import { Table } from 'react-bootstrap';
+import ListItem from '../ListItem';
 const List = () => {
 	const inventory = useSelector((state) => state.inventory);
-	const dispatch = useDispatch();
 
 	return (
 		<Table striped bordered hover>
@@ -20,23 +18,7 @@ const List = () => {
 			</thead>
 			<tbody>
 				{inventory.map((item, index) => (
-					<tr key={item.name}>
-						<td>{index + 1}</td>
-						<td>{item.name}</td>
-						<td>{item.fullQuantity}</td>
-						<td>
-							<Form.Control
-								type="number"
-								placeholder="Enter current quantity"
-								defaultValue={item.fullQuantity}
-								min={0}
-								onChange={({ target }) =>
-									dispatch(updateQuantity(item, target.value))
-								}
-							/>
-						</td>
-						<td>{item.missing}</td>
-					</tr>
+					<ListItem key={item.name} item={item} index={index} />
 				))}
 			</tbody>
 		</Table>
