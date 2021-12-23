@@ -6,10 +6,8 @@ const Footer = () => {
 	return (
 		<footer
 			className="
-			position-absolute
+			fixed-bottom
 			bottom-0
-			start-50
-			translate-middle-x
 			bg-dark
 			text-center text-white
 			w-100
@@ -36,7 +34,7 @@ const Footer = () => {
 				</a>
 			</div>
 
-			<div className="text-center p-3">
+			<div className="text-center p-1">
 				© 2021 Copyright:
 				<span>
 					{' '}
