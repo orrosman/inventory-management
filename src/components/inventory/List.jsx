@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Table } from 'react-bootstrap';
-import ListItem from '../ListItem';
+import ListItem from './ListItem';
 const List = () => {
-	const inventory = useSelector((state) => state.inventory);
+	const { inventory } = useSelector((state) => state.inventoryReducer);
 
 	return (
 		<Table striped bordered hover>

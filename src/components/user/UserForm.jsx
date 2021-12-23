@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewUser } from '../../state/actions/userActions';
+import UpdateUserButton from './UpdateUserButton';
 
 const UserForm = () => {
+	const dispatch = useDispatch();
+	const user = useSelector((state) => state.userReducer.user);
+
 	const [name, setName] = useState('');
 	const [workplace, setWorkplace] = useState('');
 	const [date, setDate] = useState();
@@ -22,7 +28,13 @@ const UserForm = () => {
 		}
 	};
 
-	return (
+	const handleSubmit = () => {
+		dispatch(addNewUser({ name: name, workplace: workplace, date: date }));
+	};
+
+	return user ? (
+		<UpdateUserButton />
+	) : (
 		<Form>
 			<Form.Group className="mb-3" controlId="full-name">
 				<Form.Label>Full Name:</Form.Label>
@@ -57,7 +69,7 @@ const UserForm = () => {
 				/>
 			</Form.Group>
 
-			<Button variant="primary" type="submit">
+			<Button variant="primary" onClick={handleSubmit}>
 				Submit
 			</Button>
 		</Form>

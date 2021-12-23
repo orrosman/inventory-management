@@ -1,4 +1,6 @@
-const inventoryReducer = (state, action) => {
+import { fullEquipmentList } from '../../data/db';
+
+const inventoryReducer = (state = { inventory: fullEquipmentList }, action) => {
 	switch (action.type) {
 		case 'UPDATE_QUANTITY':
 			const { current } = action.payload;

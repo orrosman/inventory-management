@@ -1,7 +1,7 @@
 import { Form } from 'react-bootstrap';
-import RemoveItemButton from './inventory/RemoveItemButton';
+import RemoveItemButton from './RemoveItemButton';
 import { useDispatch } from 'react-redux';
-import { updateQuantity } from '../state/actions/inventoryActions';
+import { updateQuantity } from '../../state/actions/inventoryActions';
 
 const ListItem = (props) => {
 	const { item, index } = props;

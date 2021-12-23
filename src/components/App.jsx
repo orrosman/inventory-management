@@ -1,6 +1,6 @@
 import React from 'react';
 import List from './inventory/List';
-import UserForm from './UserForm';
+import UserForm from './user/UserForm';
 import NewItemButton from './inventory/NewItemButton';
 
 const App = () => {

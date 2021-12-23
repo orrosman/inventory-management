@@ -1,7 +1,6 @@
 import { createStore } from 'redux';
-import { fullEquipmentList } from '../data/db';
-import inventoryReducer from './reducers/inventoryReducer';
+import rootReducer from './reducers/index';
 
-const store = createStore(inventoryReducer, { inventory: fullEquipmentList });
+const store = createStore(rootReducer);
 
 export default store;
