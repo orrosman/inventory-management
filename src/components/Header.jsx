@@ -1,5 +1,5 @@
 import React from 'react';
-import exampleLogo from '../assets/logo.svg';
+import exampleLogo from '../assets/plus.png';
 
 const Header = () => {
 	return (
@@ -7,11 +7,11 @@ const Header = () => {
 			<i className="navbar-brand mx-auto text-center">
 				<img
 					src={exampleLogo}
-					width="100"
-					height="100"
+					width="80"
+					height="80"
 					alt="example logo"
 				></img>
-				<div>header text here</div>
+				<div>Inventory Management</div>
 			</i>
 		</nav>
 	);
