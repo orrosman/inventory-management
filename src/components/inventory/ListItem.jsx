@@ -1,6 +1,6 @@
 import { Form } from 'react-bootstrap';
 import RemoveItemButton from './RemoveItemButton';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateQuantity } from '../../state/actions/inventoryActions';
 import { useState } from 'react';
 
