@@ -1,4 +1,9 @@
 import { fullEquipmentList } from '../../data/db';
+import { Notyf } from 'notyf';
+
+const notyf = new Notyf({
+	duration: 3000,
+});
 
 const inventoryReducer = (state = { inventory: fullEquipmentList }, action) => {
 	switch (action.type) {
@@ -32,6 +37,7 @@ const inventoryReducer = (state = { inventory: fullEquipmentList }, action) => {
 			);
 
 			if (!isInList && newItemName.trim() !== '' && newItemQuantity > 0) {
+				notyf.success('The item was added to the list');
 				return {
 					...state,
 					inventory: [
@@ -45,14 +51,38 @@ const inventoryReducer = (state = { inventory: fullEquipmentList }, action) => {
 					],
 				};
 			} else {
+				notyf.error(
+					`An item named ` +
+						'<b>' +
+						newItemName +
+						'</b>' +
+						`  already exist in the inventory`
+				);
+
 				return state;
 			}
 
 		case 'REMOVE_ITEM':
-			const updatedList = state.inventory.filter(
-				(item) => item.name !== action.payload.itemName
+			const removedItemName = action.payload.itemName;
+			const answer = window.confirm(
+				`Are you sure you want to remove ${removedItemName} from the list?`
 			);
-			return { ...state, inventory: updatedList };
+			if (answer) {
+				const updatedList = state.inventory.filter(
+					(item) => item.name !== removedItemName
+				);
+				notyf.error(
+					`The item named ` +
+						'<b>' +
+						removedItemName +
+						'</b>' +
+						`  has been removed`
+				);
+				return { ...state, inventory: updatedList };
+			} else {
+				notyf.error('Removing was canceled');
+				return state;
+			}
 		default:
 			return state;
 	}
